@@ -1,6 +1,6 @@
 # himage
 
-Source code to HIMAGE. The code is arranged like the original binary image. When built using `check.bat` it should produce the exact same binary as the original binary from SilverLit. Requires the `ASW` assembler to build. This is provided in the `BIN` subdirectory.
+Image-creator for new images that resembles ordering of the original. When built using `check.bat` it should produce the exact same binary as the original binary from SilverLit. Requires the `ASW` assembler to build. This is provided in the `BIN` subdirectory.
 
 * See `make.bat` for build operation.
 * See `check.bat` for base comparison.
