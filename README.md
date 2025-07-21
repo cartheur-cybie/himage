@@ -7,9 +7,9 @@ Image-creator for new images that resembles ordering of the original. When built
 
 _Interesting files_
 
-* newcart.a - main assembly file, includes all the rest
+* newcart.asm - main assembly file, includes all the rest
     - `*.i` - includes
-	- `*.a`_ - continuation of code
+	- `*.a_` - continuation of assembler code
 	- `*.dat` - data structures
     - `bin\*.*` - tools needed to build
     - `walkup8a.car` - original cartridge for comparison (see check.bat)
