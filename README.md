@@ -2,7 +2,7 @@
 
 Rebuild tooling for the i-Cybie HIMAGE ROM.
 
-This repository now supports Linux-first builds on both `amd64` and `arm64` without relying on Windows batch files.
+This repository supports Linux-first builds on both `amd64` and `arm64`.
 
 ## Prerequisites (Linux)
 
@@ -27,9 +27,6 @@ If needed, add user-local binaries to PATH:
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
-
-Optional fallback (primarily `amd64`):
-- `ALLOW_WINE_FALLBACK=1` plus `wine` with `bin/ASW.EXE` and `bin/P2BIN.EXE`
 
 Native Linux binaries are recommended for cross-arch portability.
 
