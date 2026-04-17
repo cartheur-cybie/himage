@@ -58,3 +58,7 @@ dkms.conf
 /out/
 /rel/
 /.build/
+
+# Python cache
+__pycache__/
+*.pyc
