@@ -1,15 +1,79 @@
 # himage
 
-Image-creator for new images that resembles ordering of the original. When built using `check.bat` it should produce the exact same binary as the original binary from SilverLit. Requires the `ASW` assembler to build. This is provided in the `BIN` subdirectory.
+Rebuild tooling for the i-Cybie HIMAGE ROM.
 
-* See `make.bat` for build operation.
-* See `check.bat` for base comparison.
+This repository now supports Linux-first builds on both `amd64` and `arm64` without relying on Windows batch files.
 
-_Interesting files_
+## Prerequisites (Linux)
 
-* newcart.asm - main assembly file, includes all the rest
-    - `*.i` - includes
-	- `*.a_` - continuation of assembler code
-	- `*.dat` - data structures
-    - `bin\*.*` - tools needed to build
-    - `walkup8a.car` - original cartridge for comparison (see check.bat)
+Install a Macroassembler AS toolchain that provides:
+- `asw` or `asl`
+- `p2bin`
+
+If your binaries are not named that way, set:
+- `ASW_BIN=/path/to/asw-compatible-binary`
+- `P2BIN_BIN=/path/to/p2bin-compatible-binary`
+
+To install from source (official upstream tarball):
+
+```bash
+make install-asl
+```
+
+By default this installs into `~/.local` (override with `PREFIX=...`).
+
+If needed, add user-local binaries to PATH:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Optional fallback (primarily `amd64`):
+- `ALLOW_WINE_FALLBACK=1` plus `wine` with `bin/ASW.EXE` and `bin/P2BIN.EXE`
+
+Native Linux binaries are recommended for cross-arch portability.
+
+## Build
+
+```bash
+make build
+```
+
+Outputs:
+- `out/newcart.ic3`
+- `rel/generic202-l.bin`
+- `rel/generic202-h.bin`
+
+## Build EXACT image
+
+```bash
+make exact
+```
+
+Output:
+- `out/exact.ic3`
+
+## Verify exact reconstruction
+
+```bash
+make check
+```
+
+This builds `EXACT` mode and verifies:
+- `out/exact.ic3 == src/walkup8a.car`
+- split output matches `walkup/walkup8a-l.bin` and `walkup/walkup8a-h.bin`
+
+## Utility targets
+
+```bash
+make toolchain-check
+make clean
+```
+
+## Source layout
+
+- `src/newcart.asm`: top-level assembly source.
+- `src/*.i`: include files.
+- `src/*.a_`: assembly fragments.
+- `src/*.dat`: data tables.
+- `scripts/`: Linux build/check scripts.
