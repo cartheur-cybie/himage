@@ -4,6 +4,22 @@ Rebuild tooling for the i-Cybie HIMAGE ROM.
 
 This repository supports Linux-first builds on both `amd64` and `arm64`.
 
+## Quickstart
+
+```bash
+make install-asl
+export PATH="$HOME/.local/bin:$PATH"
+make toolchain-check
+make build
+make check
+```
+
+Expected outputs:
+- `out/newcart.ic3`
+- `rel/generic202-l.bin`
+- `rel/generic202-h.bin`
+- `out/exact.ic3` (exact match checked against `src/walkup8a.car`)
+
 ## Prerequisites (Linux)
 
 Install a Macroassembler AS toolchain that provides:
